@@ -1,9 +1,7 @@
 package com.bridgeLabz.Queues;
-/*(UC3-Queue_Creation)
-Ability to create a Queue of 56->30->70
-- Use LinkedList to do the Queue Operations
-- Here enqueue will internally call append method on LinkedList.
-- So 56 will be added first then 30 and then 70 to make 56 on top of the Stack*/
+/*(UC4-Peek_and_Dequeue)
+Ability to dequeue from the beginning
+-Use LinkedList to do the Queue Operations*/
 public class Queues {
     static class Node {
         int data;
@@ -30,6 +28,27 @@ public class Queues {
                 tail = newNode;
             }
         }
+        public static int remove() {            //to delete the element
+            if(isEmpty()) {
+                System.out.println("empty queue");
+                return -1;
+            }
+            int front = head.data;
+            //single node
+            if(head == tail) {
+                tail = null;
+            }
+            head = head.next;
+            return front;
+        }
+
+        public static int peek() {          // to look out the top element
+            if(isEmpty()) {
+                System.out.println("empty queue");
+                return -1;
+            }
+            return head.data;
+        }
     }
 
     public static void main(String[] args) {
@@ -37,5 +56,10 @@ public class Queues {
         queue.add(56);
         queue.add(30);
         queue.add(70);
+
+        while(!queue.isEmpty()) {
+            System.out.println(queue.peek());
+            queue.remove();
+        }
     }
 }
